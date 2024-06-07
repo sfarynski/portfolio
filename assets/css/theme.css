@@ -1,3 +1,213 @@
-body{
-    background-color: lightblue;
+* 
+* General
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    /* outline: 1px solid red; */
 }
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+}
+
+html {
+  scroll-padding-top: 4rem;
+}
+
+h1 {
+  color: #5514C5 !important;
+  margin-bottom: 0 !important;
+}
+
+h2 i,
+h3 i {
+  font-size: 0.8rem;
+  color: #5514C5;
+}
+
+html {  
+  scroll-behavior: smooth;
+}
+
+.relative {
+    position: relative;
+  }
+  
+.absolute {
+    position: absolute;
+}
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexcolumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.gap10 {
+  gap: 10px;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.center {
+    text-align: center;
+    justify-content: center;
+  }
+  
+
+
+/* SINGLE PAGE*/
+body .ast-container {
+    max-width: 100vw !important; 
+  }
+  
+  .ast-container .single__page {
+    width: 100%;
+    max-width: 1440px;
+    margin: 50px auto 20px;
+  }
+  
+  
+  .container__info__post h1 {
+    text-align: center;
+    margin: 30px 20px 0;
+  }
+  
+  .container__info__post h2,
+  .container__info__post h3,
+  .container__info__post h4 {
+    padding-bottom: 10px;
+  }
+  
+  .container__info__post h2,
+  .container__info__post h2 p {
+    margin: 5px auto 10px;
+  }
+  
+  .techno_icon,
+  .container__info__post .techno_icon {
+    gap: 10px;  
+    font-size: 2.4rem;
+    margin: 5px auto 15px;
+  }
+  
+  .background__post {
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 20px 25px;
+  }
+  
+  .container__middle,
+  .container__bottom {
+    max-width: 1440px;
+  }
+  
+  .container__middle__left,
+  .container__middle__right {
+    padding: 30px 35px;
+  }
+  
+  .container__middle__left li,
+  .container__middle__right li {
+    padding-bottom: 10px;
+  }
+  
+  .container__title h2 {
+    width: 60%;
+    margin: auto;
+  }
+  
+  .container__top,
+  .container__middle__left,
+  .container__middle__right {
+    align-content: center;
+  }
+  
+  .portfolio_achievements_info p a,
+  .container__middle a,
+  .container__bottom_link a {
+    color: #1437C4 !important;
+    text-decoration: underline dotted !important;
+  }
+  
+  .portfolio_achievements_info p a:hover,
+  .container__middle a:hover,
+  .container__bottom_link a:hover {
+    color: #a35600 !important;
+    text-decoration: underline !important;
+  }
+  
+  .container__middle a {
+    font-weight: bold;
+  }
+  
+  .container__top__image {
+    padding: 20px 10px 25px;
+    width: 100%;
+  }
+  
+  .container__middle {
+    justify-content: center;
+    margin: 20px auto 30px;
+    gap: 60px;
+  }
+  
+  .container__middle__right{
+    width: 45%;
+  }
+  
+  .container__middle__left {
+    width: 45%;
+  }
+  
+  .container__middle__info {
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container__bottom {
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: center;
+    margin: auto;
+    gap: 30px;
+  }
+  
+  .container__bottom .background__post {
+    height: auto;
+    max-height: 450px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  
+  .container__bottom .container__bottom_figma,
+  .container__bottom .container__bottom_website_link,
+  .container__bottom .container__bottom_link {
+    width: 29%;
+    min-width: 380px;
+  }
+  
+  .container_link,
+  .container_link ul {
+    text-align: left;
+  }
+  
+  .container__site__navigation {
+    gap: 40px;
+  }
+  
+  .site__navigation__prev,
+  .site__navigation__next {
+    padding: 40px 10px;
+  }
