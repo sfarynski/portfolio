@@ -211,3 +211,92 @@ body .ast-container {
   .site__navigation__next {
     padding: 40px 10px;
   }
+
+  /* PORTFOLIO PAGE */
+#container_title_achievements div.wp-block-column {
+    padding-top: 30px;
+  }
+  
+  .container_article {
+    max-width: 1440px;  
+    padding-bottom: 50px;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .container_article .article_details {
+    width: 30%;
+    min-width: 280px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    transition: .3s ease-in-out;
+    box-shadow: 5px 5px 5px -2px #62626387;
+      -webkit-box-shadow: 5px 5px 5px -2px #62626387;
+      -moz-box-shadow: 5px 5px 5px -2px #62626387;
+    margin: 10px;
+  }
+    
+    .container_article .article_details:hover {  
+    box-shadow: 0 0 0 0 transparent;
+      -webkit-box-shadow: 0 0 0 0 transparent;
+      -moz-box-shadow: 0 0 0 0 transparent;
+  }
+  
+  .container_article .article_details .origin,
+  .container_article .article_details .portfolio_icon {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .container_article .article_details .portfolio_icon {
+    gap: 10px;  
+    font-size: 1.8rem;
+  } 
+  
+  .container__article_info {
+    padding: 10px 20px;
+  }
+  
+  .container_article .article_details h3 {
+    margin: 15px 0 0;
+    font-size: 1.6rem;
+    color: #220687;
+  } 
+  
+  .container_article .article_details h4 {
+    margin: 20px 0 0;
+    font-size: 1.1rem;
+  } 
+  
+  .container_article .article_details p {
+    margin-bottom: 5px;
+    font-size: 0.8rem;  
+  }
+  
+  .container_article .btn_more {
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+  
+  .container_article .button {  
+    background-color: #ff8600;
+    border: 1px solid #FF860087;
+    color: #220687;
+    margin: 5px auto;
+    padding: 15px;
+      transition: .3s ease-in-out;
+    box-shadow: 5px 5px 5px -2px rgba(255,134,0,0.53);
+    -webkit-box-shadow: 5px 5px 5px -2px rgba(255,134,0,0.53);
+    -moz-box-shadow: 5px 5px 5px -2px rgba(255,134,0,0.53);
+  }
+  
+  .container_article .button:hover {  
+    background-color: #FF860087;
+    border-color: #ff8600;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-box-shadow: 0 0 0 0 transparent;
+    -moz-box-shadow: 0 0 0 0 transparent;
+  }
