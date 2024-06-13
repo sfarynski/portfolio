@@ -66,8 +66,7 @@
 				<div class="container__bottom_figma background__post">
 					<h4>La maquette</h4>
 					<?php
-					$urlMaquette = ""/*get_field('project_figma')*/;
-					$imageMaquette = ""/*get_field('maquette')*/;
+					$imageMaquette = get_field('img-maquette');
 					// !empty($imageMaquette) && !$imageMaquette =="" && !empty($urlMaquette) && !$urlMaquette =="" )
 					if (!empty($urlMaquette) && !$urlMaquette =="" ) {
 						echo ('<a class="link_figma" href="'. $urlMaquette .'" target="_blank"><i class="fa-brands fa-figma"></i> Lien vers la maquette Figma</a>');
@@ -96,15 +95,19 @@
 				<div class="container__bottom_website_link background__post">
 				<h4>Le site final</h4>	
 				<?php				
-				$imageWebsite = /*get_field('image_sup_2')*/get_the_post_thumbnail();				
+				$imageWebsite = get_field('img-web-site')/*get_the_post_thumbnail()*/;				
 				//$urlWebsite = get_field('project_link');
 				// echo('<a class="link_website" href="'. $urlWebsite .'" target="_blank"></i> Lien vers le site en ligne</a>');
-				echo('<a href="#imageWebsite"><img src="'. $imageWebsite .'" alt="Le site final" title="Le site final"></a>');
-				echo('<div class="modal" id="imageWebsite">');
-				echo('<a title="Description" href="#ferme">');
-				echo('<img alt="Image" src="'. $imageWebsite .'">');
-				echo('</a>');
-				echo('</div>');
+                if (!empty($imageWebsite) && !$imageWebsite =="" ) {
+                    echo '<a href="#imageWebsite"><img src="'. $imageWebsite.'" alt="Le site final" title="Le site final">'.'</a>';
+                    echo('<div class="modal" id="imageWebsite">');
+                    echo('<a title="Accueil du site" href="#ferme">');
+                    echo('<img alt="Image" src="'. $imageWebsite .'">');
+                    echo('</a>');
+                    echo('</div>');
+                } else {
+                    echo ("Il n'y a pas d'image du site web' pour ce projet.");
+                }
 				?>	
 				</div>
 		</div>

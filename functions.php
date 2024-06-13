@@ -7,51 +7,46 @@ function theme_enqueue_styles() {
     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/assets/css/theme.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/theme.css'));
 
 }
+function theme_scripts() {    
+    //if (is_single()){
+        wp_enqueue_script('skollr-scroll', 'https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js', array('jquery'));
+        wp_enqueue_script('script', get_stylesheet_directory_uri() . '/assets/js/script.js', array('skollr-scroll'));
+    //}
+   
+}
+add_action('wp_enqueue_scripts', 'theme_scripts');
+
 
 function astra_force_remove_style() {
     wp_dequeue_style( 'astra-theme-css' );
     wp_dequeue_style( 'astra-addon-css' );
 }
-
 add_action( 'wp_enqueue_scripts', 'astra_force_remove_style', 99 );
 
 // Active ICON
 function techno_icon () {
     // Récupération de la liste de tous les terms 
-    /*$allTerm = get_terms('techno-acf');  
-    $field = get_field('techno');
-    
-    if (!empty($field) && !$field == "") {
-        foreach ($field as $data) {
-            // var_dump($data);
-
-            if ($data->slug == "html") { 
-                echo('<span class="icon_html" title="Utilisation de HTML5"><i class="fa-brands fa-html5"></i></span>'); 
-            } 
-            if ($data->slug == "css") { 
-                echo('<span class="icon_css" title="Utilisation de CSS3" ><i class="fa-brands fa-css3"></i></span>'); 
-            } 
-            if ($data->slug == "js" || $data->slug == "javascript") { 
-                echo('<span class="icon_js" title="Utilisation de JavaScript"><i class="fa-brands fa-js"></i></span>'); 
-            } 
-            if ($data->slug == "php") { 
-                echo('<span class="icon_php" title="Utilisation de PHP8"><i class="fa-brands fa-php"></i></span>'); 
-            } 
-            if ($data->slug == "wp"  || $data->slug == "wordpress") { 
-                echo('<span class="icon_wp" title="Utilisation de WordPress 6" ><i class="fa-brands fa-wordpress"></i></span>'); 
-            }                 
-            if ($data->slug == "woo commerce"  || $data->slug == "woo-commerce") { 
-                echo('<span class="icon_woo-commerce woo-commerce hidden" title="Utilisation de Woo-Commerce" ><img src="'. get_stylesheet_directory_uri() . '/assets/img/woocommerce-couleur-48.png" /></span>');  
-            } 
-        }
-    }*/
-    $fruitsArray=get_the_category(the_ID());
+    $post_id = get_the_id();
+    $fruitsArray=get_the_category($post_id );
     foreach ($fruitsArray as $fruit) {
         if($fruit->name === "wordpress"){
-            echo '<img src="'. get_stylesheet_directory_uri() .'/assets/images/icons8-wordpress-240.png" alt="Pas de photo" width="77px" >';
+            echo '<span class="icon_wp" title="Utilisation de WordPress 6" ><i class="fa-brands fa-wordpress"></i></span>'; 
         }
         if($fruit->name === "php"){
-            echo '<img src="'. get_stylesheet_directory_uri() .'/assets/images/icons8-php-160.png" alt="Pas de photo" width="77px" >';
+            echo '<span class="icon_php" title="Utilisation de PHP"><i class="fa-brands fa-php"></i></span>'; 
+
+        }
+        if($fruit->name === "javascript"){
+            echo '<span class="icon_js javascript" title="Utilisation de JavaScript"><i class="fa-brands fa-js"></i></span>';
+        }
+        if($fruit->name === "html"){
+            echo '<span class="icon_html html" title="Utilisation de HTML5"><i class="fa-brands fa-html5"></i></span>';
+            '<span class="icon_css css" title="Utilisation de CSS3" ><i class="fa-brands fa-css3"></i></span>';
+            
+        }
+        if($fruit->name === "css"){
+            echo '<span class="icon_css css" title="Utilisation de CSS3" ><i class="fa-brands fa-css3"></i></span>';
+            
         }
     }
 }
@@ -160,7 +155,7 @@ function portfolio_post_list($items) {
             $project_mission = mb_substr($project_mission , 0, 150,'UTF-8'); 
             $project_mission .= " ...";
         }
-        $project_origin = "openclassroom"/*get_field('project_origin')*/;                   
+        $project_origin = "openclassroom";                   
         
         $string .= '<div class="'. $post_type .' article_details article_'. $post_id .'">';
         $string .= '<a class="article_link" href="'. get_the_permalink() .'">';
@@ -168,52 +163,25 @@ function portfolio_post_list($items) {
         if (!$project_origin == "") {
             $string .= '<p class="origin">Avec '. $project_origin .'</p>';
         } 
-        $string .= '<p class="taxonomy-techno-acf flexrow portfolio_icon">';
+        $string .= '<p class= "techno_web flexrow portfolio_icon">';
         
         // Recherche des techno utilisées pour afficher les icones correspondants
-        /*$field = get_field('techno');
-        if (!empty($field) && !$field == "") {
-            foreach ($field as $data) {
-    
-                if ($data->slug == "html") { 
-                    $string .= '<span class="icon_html html" title="Utilisation de HTML5"><i class="fa-brands fa-html5"></i></span>'; 
-                } 
-                if ($data->slug == "css") { 
-                    $string .= '<span class="icon_css css" title="Utilisation de CSS3" ><i class="fa-brands fa-css3"></i></span>'; 
-                } 
-                if ($data->slug == "js" || $data->slug == "javascript") { 
-                    $string .= '<span class="icon_js javascript" title="Utilisation de JavaScript"><i class="fa-brands fa-js"></i></span>'; 
-                } 
-                if ($data->slug == "php") { 
-                    $string .= '<span class="icon_php php" title="Utilisation de PHP8"><i class="fa-brands fa-php"></i></span>'; 
-                } 
-                if ($data->slug == "wp"  || $data->slug == "wordpress") { 
-                    $string .= '<span class="icon_wp wordpress" title="Utilisation de WordPress 6" ><i class="fa-brands fa-wordpress"></i></span>'; 
-                }                 
-                if ($data->slug == "elementor") { 
-                    // $string .= '<span class="icon_elementor icon_image hidden" title="Utilisation du page builder Elementor" ><img src="'. get_stylesheet_directory_uri() . '/assets/img/Elementor-couleur-24.png" /></span>'; 
-                    $string .= '<span class="icon_elementor icon_image hidden" title="Utilisation du page builder Elementor" ></span>'; 
-                } 
-                if ($data->slug == "gutenberg") { 
-                    // $string .= '<span class="icon_gutenberg icon_image hidden" title="Utilisation du page builder Gutenber" ><img src="'. get_stylesheet_directory_uri() . '/assets/img/gutenberg-couleur-48.png" /></span>'; 
-                    $string .= '<span class="icon_gutenberg icon_image hidden" title="Utilisation du page builder Gutenber" ></span>'; 
-                } 
-                if ($data->slug == "jquery") { 
-                    // $string .= '<span class="icon_jquery hidden" title="Utilisation de jQuery" ><img src="'. get_stylesheet_directory_uri() . '/assets/img/jQuery-couleur-48.png" /></span>'; 
-                    $string .= '<span class="icon_jquery hidden" title="Utilisation de jQuery" ></span>'; 
-                } 
-                if ($data->slug == "woocommerce" || $data->slug == "woo-commerce" ) { 
-                    $string .= '<span class="icon_woo-commerce icon_image hidden" title="Utilisation de Woo Commerce" ><img src="'. get_stylesheet_directory_uri() . '/assets/img/woocommerce-couleur-48.png" /></span>'; 
-                } 
-            }
-        }*/
-        $fruitsArray=get_the_category(the_ID());
+        $fruitsArray=get_the_category($post_id);
         foreach ($fruitsArray as $fruit) {
             if($fruit->name === "wordpress"){
-                $string .='<img src="'. get_stylesheet_directory_uri() .'/assets/images/icons8-wordpress-240.png" alt="Pas de photo" width="77px" >';
+                $string .= '<span class="icon_wp" title="Utilisation de WordPress 6" ><i class="fa-brands fa-wordpress"></i></span>'; 
             }
             if($fruit->name === "php"){
-                $string .='<img src="'. get_stylesheet_directory_uri() .'/assets/images/icons8-php-160.png" alt="Pas de photo" width="77px" >';
+                $string .= '<span class="icon_php" title="Utilisation de PHP"><i class="fa-brands fa-php"></i></span>'; 
+            }
+            if($fruit->name === "html"){
+                $string .='<span class="icon_html html" title="Utilisation de HTML5"><i class="fa-brands fa-html5"></i></span>';
+            }
+            if($fruit->name === "css"){
+                $string .='<span class="icon_css css" title="Utilisation de CSS3" ><i class="fa-brands fa-css3"></i></span>';
+            }
+            if($fruit->name === "javascript"){
+                $string .='<span class="icon_js javascript" title="Utilisation de JavaScript"><i class="fa-brands fa-js"></i></span>';
             }
         }
         $string .= '</p>';   
@@ -252,3 +220,34 @@ function portfolio_post_list($items) {
 
 /** On publie le shortcode  */
 add_shortcode('portfolio_post', 'portfolio_post_list');
+
+
+function shortcode_resume(){
+    $string = "";
+
+    $string .= '<div class="studies__jobs">';
+            $string .= '<ol class="circle">';
+                $string .= '<li><strong>Formations</strong>';
+                    $string .= '<ul class="square">';
+                        $string .= '<li><strong>2024 - OpenClassrooms</strong><p>Développeur intégrateur web (titre RNCP de niveau V).</p></li>';
+                        $string .= '<li><strong>2003 - Ecole des Techniques du Génie Logiciel  </strong><p>Ingénieur Génie Logiciel - CFA AFTI (78) (7_ Yvelines)</p></li>';
+                        $string .= '<li><strong>2001 - Université Montpellier II- IUT GEII (34 Montpellier)</strong><p>Bac+2 Technicien Electronique et Informatqiue Industriel</p></li>';
+                    $string .= '</ul>';
+                $string .= '</li><br><br>';
+                    $string .= '<li><strong>Expériences</strong>';
+                    $string .= '<ul class="square">';
+                        $string .= '<li><strong>Juin 2020 à Dec 2021 - Ingénieur IOT/Embarqué chez BEOGA</strong><p>Développement en C/shell pour un router LAN/WAN avec module Wifi, Zigbee, Modbus, GSM (4G), pour gestion/control des données onduleurs photovoltaïque et compteur Linky.</p></li>';
+                        $string .= '<li><strong>Oct 2011 à Aout 2017 - Ingénieur Validation/Développement chez ALTEN  </strong><p>Développement en C pour cible Microblaze (FPGA), noyau temps réel FreeRTOS, pile IP LWIP</p></li>';
+                        $string .= '<li><strong>Oct 2007 à Nov 2010 - Consultant chez EUROGICIEL</strong><p>Ingénieur Validation logiciel embarqué aéronautique système de freinage éléctrique du boeing 787 (Norme DO178B DAL A)</p></li>';
+                        $string .= '<li><strong>Jan 2005 à Juil 2007 - Consultant chez SOLENT</strong><p>Ingénieur DéveloppementValidation logiciel embarqué aéronautique Avion AIRBUS A400M et A380</p></li>';
+                        $string .= '</ul>';
+                $string .= '</li>';
+    
+        $string .= '</ol>';
+    $string .='</div>';
+ 
+    return $string;
+}
+
+/** On publie le shortcode  */
+add_shortcode('resume_content', 'shortcode_resume');

@@ -32,7 +32,6 @@ get_header(); ?>
 						the_post();
 						the_title();
 						//get_template_part( 'template-parts/categories_list' );
-						//echo get_the_category_list();
 						$fruitsArray=get_the_category(the_ID());
 						foreach ($fruitsArray as $fruit) {
 							if($fruit->name === "wordpress"){

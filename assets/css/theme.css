@@ -223,6 +223,38 @@ body .ast-container {
     gap: 20px;
     justify-content: center;
   }
+
+  .wp-block-columns{
+    gap: 40px;
+  }
+  .wp-container-core-column-is-layout-7, .wp-container-core-column-is-layout-8 {
+    background-color: #fff;
+    /*border: solid black 1px;*/
+    border-radius: 15px;
+    background: linear-gradient(145deg, #060097, #C10FFF);
+    box-shadow:  18px 18px 39px #a4a4a4,
+             -18px -18px 39px #ffffff;
+    /*box-shadow: 5px 5px 5px -2px #62626387;
+      -webkit-box-shadow: 5px 5px 5px -2px #62626387;
+      -moz-box-shadow: 5px 5px 5px -2px #62626387;*/
+    padding: 30px;
+  }
+  .wp-container-core-column-is-layout-7 h3, 
+  .wp-container-core-column-is-layout-8 h3,
+  .wp-container-core-column-is-layout-8 .studies__jobs strong{
+    color:white !important;
+    font-weight: 600 !important;
+  }
+
+  .wp-container-core-column-is-layout-8 .studies__jobs .square li {
+    list-style: square !important;
+}
+.wp-container-core-column-is-layout-8 .studies__jobs ul, ol{
+    color: white;
+}
+  .wp-container-core-column-is-layout-7 p, .wp-container-core-column-is-layout-8 p{
+    color:white;
+  }
   
   .container_article .article_details {
     width: 30%;
@@ -236,6 +268,11 @@ body .ast-container {
       -webkit-box-shadow: 5px 5px 5px -2px #62626387;
       -moz-box-shadow: 5px 5px 5px -2px #62626387;
     margin: 10px;
+  }
+
+  .container_article .article_details .techno_web img{
+    width: 50px;
+    height: 50px;
   }
     
     .container_article .article_details:hover {  
@@ -257,6 +294,10 @@ body .ast-container {
   
   .container__article_info {
     padding: 10px 20px;
+  }
+  /*article_details*/
+  .container__article_info a {
+    text-decoration: none !important;
   }
   
   .container_article .article_details h3 {
@@ -299,4 +340,118 @@ body .ast-container {
     box-shadow: 0 0 0 0 transparent;
     -webkit-box-shadow: 0 0 0 0 transparent;
     -moz-box-shadow: 0 0 0 0 transparent;
+  }
+
+  /* techno web icon*/
+  .icone_html i,
+.icone_js i,
+.icone_wp i,
+.icon_html i,
+.icon_css i,
+.icon_php i {
+  transition: 1s;
+}
+
+/* Couleurs des images fontawesome */
+.icone_html i,
+.icon_html i {
+  color : #E44D26 !important;
+}
+
+.icone_css i,
+.icon_css i {
+  color : #1572B6 !important;
+}
+
+.icone_js i,
+.icon_js i {
+  color : #D6BE00 !important;
+}
+
+.icone_wp i,
+.icon_wp i {
+  color : #00769d !important;
+}
+
+.icone_php i,
+.icone_php image,
+.icon_php i,
+.icon_php image {
+  color : #868db6 !important;
+}
+
+
+/*  --- HEADER ---  */
+
+
+header#masthead.site-header {
+    position: sticky;
+    /* position: fixed; */
+    background-color: #1437C4;
+    z-index: 999;
+    top: 0;
+    height: 80px;
+    padding-bottom: 100px !important;
+    box-shadow: 0 5px 6px #27187e57;
+}
+
+nav .main-navigation .menu-item  a:hover {
+    color: #fcfcfd !important;
+    text-decoration: underline;
+}
+
+
+/* IMAGE DANS UNE MODALE EN CSS */
+.modal {
+    /* Le trame de fond */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    padding: 20px;
+    z-index: 100000;
+    top: 0;
+    left: 0;
+    display: none;
+    background: rgba(0,0,0,0.7);
+  }
+  
+  .modal a {
+    /* Pour centrer l’image dans la modale */
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center;
+  }
+  
+  .modal img {
+    height: 95%;
+    /* Le contour de l’image */
+    max-width:1200px;
+    padding: 10px;
+    background: #ffffff;
+  }
+  
+  
+  /* Selecteur « target pour afficher l’image » */
+  .modal:target { 
+    display: table; 
+  }
+
+
+  /* ***** scroll des parcours pro et expériences pro et cv ***** */
+.wp-container-core-column-is-layout-7 {
+
+    transform: translate3d(-500px, 0, 0);
+    transition: transform 1.5s ease;
+  }
+  .wp-container-core-column-is-layout-7.move {
+    transform: translate3d(0px, 0, 0);
+  }
+  
+  .wp-container-core-column-is-layout-8 {
+
+    transform: translate3d(+900px, 0, 0);
+    transition: transform 1.5s ease;
+  }
+  .wp-container-core-column-is-layout-8.move {
+    transform: translate3d(0px, 0, 0);
   }
